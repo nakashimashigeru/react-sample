@@ -9,27 +9,20 @@ class Message extends Component {
 
   constructor(props) {
     super(props);
+    this.doChange = this.doChange.bind(this);
+  }
+
+  doChange(e) {
+    if (e.target.value.length > this.props.maxlength) {
+      this.props.onCheck(e);
+      e.target.value = e.target.value.substr(0, this.props.maxlength);
+    }
   }
 
   render() {
-    let content = this.props.children;
-    let arr = content.split('。');
-    let arr2 = [];
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].trim() != '') {
-        arr2.push(arr[i]);
-      }
-    }
-
-    let list = arr2.map((value, key) => (
-      <li className="list-group-item" style={this.li} key={key}>
-        {key + 1}. {value} .
-      </li>
-    ));
-
-    return <div>
-      <h2>{this.props.title}</h2>
-      <ol className="list-group">{list}</ol>
+    return <div className="form-group">
+      <label>input:</label>
+      <input type="text" className='form-control' onChange={this.doChange} />
     </div>
   }
 }
