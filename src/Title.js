@@ -7,16 +7,16 @@ let data = {
 
 const SampleContext = React.createContext(data);
 
-class Message extends Component {
+class Title extends Component {
   static contextType = SampleContext;
 
   render() {
     return (
-      <div className='alert alert-primary'>
-        <p>{this.context.message}</p>
+      <div className='card p-2 my-3'>
+        <h2>{this.context.title}</h2>
       </div>
     );
   }
 }
 
-export default Message;
+export default Title;
