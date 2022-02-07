@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-
-let data = {
-  title: 'React-Context',
-  message: 'this is sample message.'
-};
-
-const SampleContext = React.createContext(data);
+import { SampleContext } from './SampleContext';
 
 class Title extends Component {
   static contextType = SampleContext;
